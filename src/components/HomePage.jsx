@@ -130,6 +130,9 @@ const HomePage = ({ setCurrentPage }) => {
               <h3>IMAGE 2025</h3>
               <p>Cambridge School Noida</p>
             </div>
+            <div>
+              <h3>Website by Satish Garg and Rahul Smritijeet</h3>
+            </div>
             <div className="footer-links">
               <button onClick={() => setCurrentPage('events')}>Events</button>
               <button onClick={() => setCurrentPage('gallery')}>Gallery</button>
