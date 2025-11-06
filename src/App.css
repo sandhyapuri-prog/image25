@@ -1972,3 +1972,8 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.creditscsn {
+  color: rgba(17, 11, 11, 0.05);
+  font-size: 0.9rem;
+}
