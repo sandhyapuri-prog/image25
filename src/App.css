@@ -1974,6 +1974,6 @@ body {
 }
 
 .creditscsn {
-  color: rgba(17, 11, 11, 0.05);
-  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
 }
