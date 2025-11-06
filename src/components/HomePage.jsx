@@ -131,7 +131,7 @@ const HomePage = ({ setCurrentPage }) => {
               <p>Cambridge School Noida</p>
             </div>
             <div>
-              <h3>Website by Satish Garg and Rahul Smritijeet</h3>
+              <h3 class="creditscsn">Website by Satish Garg and Rahul Smritijeet</h3>
             </div>
             <div className="footer-links">
               <button onClick={() => setCurrentPage('events')}>Events</button>
