@@ -1459,7 +1459,7 @@ const EventsPage = () => {
       <div className={`events-sidebar ${isSidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="events-sidebar-inner">
           <div className="events-sidebar-header">
-            <h2 className="events-sidebar-title">EVENT CATEGORIES</h2>
+            <h2 className="events-sidebar-title">CATEGORIES</h2>
           </div>
           <nav className="events-sidebar-nav">
             {Events.map((event, index) => (
