@@ -13,16 +13,15 @@ const ReachUsPage = () => {
           {/* Contact Info */}
           <div className="contact-info-section">
             <div className="info-card">
-              <h3>📍 Address</h3>
+              <h3>Address</h3>
               <p>Cambridge School</p>
               <p>Sector 27, Noida</p>
               <p>Uttar Pradesh - 201301</p>
             </div>
 
             <div className="info-card">
-              <h3>📞 Contact</h3>
-              <p>Phone: +91 120 2565892</p>
-              <p>Email: image2025@cambridgeschool.edu.in</p>
+              <h3>Contact</h3>
+              <p>Email: info@cambridgeschool.edu.in</p>
             </div>
 
             <div className="info-card">
@@ -32,7 +31,7 @@ const ReachUsPage = () => {
             </div>
 
             <div className="info-card">
-              <h3>🌐 Connect With Us</h3>
+              <h3>Connect With Us</h3>
               <div className="social-links" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <a 
                   href="https://www.facebook.com/cambridgeschoolnoida" 
@@ -45,7 +44,7 @@ const ReachUsPage = () => {
                   Facebook
                 </a>
                 <a 
-                  href="https://www.instagram.com/cambridgeschoolnoida" 
+                  href="https://www.instagram.com/cambridgenoida" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="social-link"
