@@ -131,7 +131,7 @@ const HomePage = ({ setCurrentPage }) => {
               <p>Cambridge School Noida</p>
             </div>
             <div>
-              <h3 class="creditscsn">Created by Satish Garg and Rahul Smritijeet</h3>
+              <h3 class="creditscsn">&copy; 2025 Cambridge School Noida. All rights reserved.</h3>
             </div>
             <div className="footer-links">
               <button onClick={() => setCurrentPage('events')}>Events</button>
@@ -140,7 +140,7 @@ const HomePage = ({ setCurrentPage }) => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2025 Cambridge School Noida. All rights reserved.</p>
+            <p>Created by Satish Garg and Rahul Smritijeet</p>
           </div>
         </div>
       </footer>
