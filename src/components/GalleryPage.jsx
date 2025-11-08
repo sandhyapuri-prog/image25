@@ -12,12 +12,6 @@ const GalleryPage = () => {
     size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
   }));
 
-  const openLightbox = (index) => {
-    setSelectedImageIndex(index);
-    setIsLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
   const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
   }, []);
@@ -28,7 +22,7 @@ const GalleryPage = () => {
     );
   }, [galleryImages.length]);
 
-    const goToNext = useCallback(() => {
+  const goToNext = useCallback(() => {
     setSelectedImageIndex((prevIndex) =>
       prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
     );
