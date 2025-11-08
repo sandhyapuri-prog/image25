@@ -1267,7 +1267,7 @@ const Events = [
           student: [
             { name: "Hardik Kumar" },
             { name: "Arya Singh Tyagi" },
-            { name: "Raunak Nayan" },
+            { name: "Diptanshu Singh" },
             { name: "Manya Aggarwal" },
             { name: "Avika Sharma" }
           ]
