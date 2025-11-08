@@ -378,7 +378,7 @@ body {
 .hero-bg-image {
   position: absolute;
   inset: -10%;
-  background: url('components/assets/brochure.png') center/cover;
+  background: url('components/assets/Statuette_Aesthetic_Moves_Sr._B.jpg') center/cover;
   opacity: 0.75;
   filter: sepia(20%) saturate(1.2);
   will-change: transform;
