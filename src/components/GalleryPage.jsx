@@ -4,15 +4,27 @@ const GalleryPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  // Gallery images from 1.jpg to 18.jpg
   const galleryImages = Array.from({ length: 18 }, (_, i) => ({
     id: i + 1,
     src: `/gallery/${i + 1}.jpg`,
     title: `Image ${i + 1}`,
-    size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
+    size:
+      i % 5 === 0
+        ? 'large'
+        : i % 3 === 0
+        ? 'tall'
+        : i % 7 === 0
+        ? 'wide'
+        : 'normal',
   }));
 
- const closeLightbox = useCallback(() => {
+  const openLightbox = useCallback((index) => {
+    setSelectedImageIndex(index);
+    setIsLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  }, []);
+
+  const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
     setSelectedImageIndex(null);
     document.body.style.overflow = 'unset';
@@ -30,9 +42,11 @@ const GalleryPage = () => {
     );
   }, [galleryImages.length]);
 
+  // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isLightboxOpen) return;
+
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') goToPrevious();
       if (e.key === 'ArrowRight') goToNext();
@@ -42,6 +56,8 @@ const GalleryPage = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isLightboxOpen, closeLightbox, goToNext, goToPrevious]);
 
+
+  
   return (
     <div className="gallery-page">
       <div className="gallery-hero">
