@@ -1501,10 +1501,9 @@ const EventsPage = () => {
         </div>
       </div>
 
-      {/* Mobile Overlay */}
-      {isMobile && isSidebarOpen && (
+      {isMobile && (
         <div
-          className="events-mobile-overlay"
+          className={`events-mobile-overlay ${isSidebarOpen ? 'active' : ''}`}
           onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
