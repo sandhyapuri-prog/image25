@@ -1950,52 +1950,95 @@ body {
   }
 }
 
-/* Responsive */
+/* Mobile Responsive Fix for Events Sidebar */
 @media (max-width: 768px) {
   .events-sidebar {
-    right: 0;
+    position: fixed;
+    right: -260px;  /* Start off-screen (hidden) */
     top: 70px;  /* Start below navbar */
-    transform: translateX(100%);
     height: calc(100vh - 70px);  /* Full height minus navbar */
-    max-height: calc(100vh - 70px);  /* Override the 78vh */
-    width: 150px;
-    border-radius: 0;
-    margin-top: 0;
+    max-height: calc(100vh - 70px);
+    width: 250px;  /* Fixed width */
+    border-radius: 16px 0 0 16px;  /* Rounded left corners */
+    transition: right 0.3s ease;  /* Smooth transition for both open and close */
+    z-index: 40;
   }
   
   .events-sidebar.sidebar-open {
-    transform: translateX(0);
+    right: 0;  /* Slide in from right */
   }
   
   .events-sidebar-inner {
     height: 100%;
     display: flex;
     flex-direction: column;
-    border-radius: 0;
-    padding: 1rem;  /* More padding for mobile */
+    border-radius: 16px 0 0 16px;  /* Match parent border radius */
+    padding: 1rem;
+    background: var(--gradient-elegant);
+    backdrop-filter: blur(20px);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);  /* Shadow on left side */
   }
   
   .events-sidebar-header {
-    flex-shrink: 0;  /* Prevent header from shrinking */
+    flex-shrink: 0;
     margin-bottom: 1rem;
     padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(160, 61, 55, 0.1);
   }
   
   .events-sidebar-nav {
-    flex: 1;  /* Take remaining space */
+    flex: 1;
     overflow-y: auto;
-    max-height: calc(100vh - 150px);  /* Adjust for navbar + header */
-    padding-bottom: 20px;  /* Ensure last item is visible */
-    padding-right: 0.5rem;  /* More padding for scrollbar */
+    max-height: calc(100vh - 150px);
+    padding-bottom: 20px;
+    padding-right: 0.5rem;
+  }
+  
+  .events-content-wrapper {
+    transition: all 0.3s ease;  /* Smooth content adjustment */
   }
   
   .events-content-wrapper.with-sidebar {
     margin-right: 0;
+    /* Optional: slightly scale down content when sidebar is open */
+    transform: scale(0.95);
+    opacity: 0.9;
   }
   
-  /* Ensure scrollbar is visible and styled */
+  /* Mobile overlay with smooth transition */
+  .events-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 30;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .events-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Hamburger button adjustments */
+  .events-hamburger-btn {
+    top: 5rem;
+    right: 1rem;
+    z-index: 51;
+    transition: all 0.3s ease;
+  }
+  
+  /* Move hamburger button when sidebar is open */
+  .events-sidebar.sidebar-open ~ .events-hamburger-btn,
+  body:has(.events-sidebar.sidebar-open) .events-hamburger-btn {
+    right: 260px;  /* Move with sidebar */
+  }
+  
+  /* Ensure scrollbar is visible */
   .events-sidebar-nav::-webkit-scrollbar {
-    width: 4px;  /* Slightly wider on mobile */
+    width: 4px;
   }
   
   .events-sidebar-nav::-webkit-scrollbar-track {
@@ -2008,17 +2051,37 @@ body {
     border-radius: 2px;
   }
   
-  /* Make subevent container scrollable if expanded */
+  /* Expanded subevent container */
   .subevent-container.expanded {
-    max-height: 400px;  /* Increase max-height on mobile */
+    max-height: 400px;
     overflow-y: auto;
   }
-  
-  /* Adjust hamburger button position */
-  .events-hamburger-btn {
-    top: 5rem;
+}
+
+/* For tablets in portrait */
+@media (min-width: 480px) and (max-width: 768px) {
+  .events-sidebar {
+    width: 280px;  /* Slightly wider on tablets */
+    right: -290px;
+  }
+}
+
+/* Remove the transform-based positioning from desktop */
+@media (min-width: 769px) {
+  .events-sidebar {
+    position: fixed;
     right: 1rem;
-    z-index: 51;  /* Ensure it's above sidebar */
+    top: 50%;
+    transform: translateY(-50%) translateX(calc(100% + 1rem));
+    height: auto;
+    max-height: 78vh;
+    width: 180px;
+    transition: transform 0.3s ease;
+    z-index: 40;
+  }
+  
+  .events-sidebar.sidebar-open {
+    transform: translateY(-50%) translateX(0);
   }
 }
 
