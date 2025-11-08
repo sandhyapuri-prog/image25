@@ -1374,11 +1374,13 @@ body {
   transform: translateY(-50%) translateX(0);
 }
 
+}
+
 .events-sidebar-inner {
   background: var(--gradient-elegant);
   backdrop-filter: blur(20px);
   border-radius: 16px;
-  padding: 0.2rem;
+  padding: 0.5rem;
   border: 1px solid rgba(160, 61, 55, 0.1);
   box-shadow: var(--shadow-lg);
 }
