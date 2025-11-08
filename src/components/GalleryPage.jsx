@@ -40,7 +40,7 @@ const GalleryPage = () => {
   React.useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isLightboxOpen) return;
-      
+
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') goToPrevious();
       if (e.key === 'ArrowRight') goToNext();
@@ -48,7 +48,7 @@ const GalleryPage = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isLightboxOpen]);
+  }, [isLightboxOpen, goToNext, goToPrevious, closeLightbox]);
 
   return (
     <div className="gallery-page">
