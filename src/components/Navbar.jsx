@@ -17,12 +17,13 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     { id: 'home', label: 'HOME' },
     { id: 'events', label: 'EVENTS'},
     { id: 'gallery', label: 'GALLERY'},
+    { id: 'team', label: 'TEAM'},  // Added TEAM here
     { id: 'reach-us', label: 'REACH US'},
     { 
       id: 'brochure', 
       label: 'BROCHURE', 
       isExternal: true, 
-      link: 'https://drive.google.com/file/d/1xNYFjD7GS9jYJZaLhsOg5tD4IOrlLCyg/view?usp=drive_link'  // Replace with your actual brochure URL
+      link: 'https://drive.google.com/file/d/1xNYFjD7GS9jYJZaLhsOg5tD4IOrlLCyg/view?usp=drive_link'
     }
   ];
 
