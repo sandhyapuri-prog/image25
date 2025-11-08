@@ -6,6 +6,8 @@ import HomePage from './components/HomePage';
 import EventsPage from './components/EventsPage';
 import GalleryPage from './components/GalleryPage';
 import ReachUsPage from './components/ReachUsPage';
+import TeamPage from './components/TeamPage';
+
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -15,20 +17,23 @@ const App = () => {
     setTimeout(() => setIsLoading(false), 800);
   }, []);
 
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'home':
-        return <HomePage setCurrentPage={setCurrentPage} />;
-      case 'events':
-        return <EventsPage />;
-      case 'gallery':
-        return <GalleryPage />;
-      case 'reach-us':
-        return <ReachUsPage />;
-      default:
-        return <HomePage setCurrentPage={setCurrentPage} />;
-    }
-  };
+// In App.js
+const renderPage = () => {
+  switch(currentPage) {
+    case 'home':
+      return <HomePage setCurrentPage={setCurrentPage} />;
+    case 'events':
+      return <EventsPage />;
+    case 'gallery':
+      return <GalleryPage />;
+    case 'team':
+      return <TeamPage />;  // Add this line
+    case 'reach-us':
+      return <ReachUsPage />;
+    default:
+      return <HomePage setCurrentPage={setCurrentPage} />;
+  }
+};
 
   return (
     <>
