@@ -1876,8 +1876,10 @@ body {
   }
 }
 
-/* Responsive Design */
+
+/* Tablet and Mobile (768px and below) */
 @media (max-width: 768px) {
+  /* Navigation */
   .nav-menu.desktop-menu {
     display: none;
   }
@@ -1886,6 +1888,7 @@ body {
     display: block;
   }
 
+  /* Typography */
   .hero-title {
     font-size: clamp(2rem, 6vw, 4rem);
   }
@@ -1894,52 +1897,13 @@ body {
     font-size: clamp(1rem, 3vw, 2rem);
   }
 
+  /* Grid Layouts */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .categories-grid {
     grid-template-columns: 1fr;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-info-section {
-    margin-top: 2rem;
-  }
-
-  .events-sidebar {
-    right: 0;
-    top: 0;
-    transform: translateX(100%);
-    height: 100vh;
-    width: 250px;
-    border-radius: 0;
-    margin-top: 70px;
-  }
-  
-  .events-sidebar.sidebar-open {
-    transform: translateX(0);
-  }
-  
-  .events-content-wrapper.with-sidebar {
-    margin-right: 0;
   }
 
   .main-content-grid {
@@ -1954,54 +1918,77 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 0.6rem;
   }
-}
 
-/* Mobile Responsive Fix for Events Sidebar */
-@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  /* Contact Section */
+  .contact-info-section {
+    margin-top: 2rem;
+  }
+
+  /* Events Sidebar - Mobile Specific */
   .events-sidebar {
-    right: 0;
+    position: fixed;
+    right: -260px;  /* Start off-screen */
     top: 70px;  /* Start below navbar */
-    transform: translateX(100%);
+    transform: none;  /* Remove transform on mobile */
     height: calc(100vh - 70px);  /* Full height minus navbar */
-    max-height: calc(100vh - 70px);  /* Override the 78vh */
+    max-height: calc(100vh - 70px);
     width: 250px;
-    border-radius: 0;
+    border-radius: 16px 0 0 16px;  /* Round left corners only */
     margin-top: 0;
+    transition: right 0.3s ease;  /* Smooth slide transition */
+    z-index: 40;
   }
   
   .events-sidebar.sidebar-open {
-    transform: translateX(0);
+    right: 0;  /* Slide in */
+    transform: none;  /* No transform */
   }
   
   .events-sidebar-inner {
     height: 100%;
     display: flex;
     flex-direction: column;
-    border-radius: 0;
-    padding: 1rem;  /* More padding for mobile */
+    border-radius: 16px 0 0 16px;
+    padding: 1rem;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
   }
   
   .events-sidebar-header {
-    flex-shrink: 0;  /* Prevent header from shrinking */
+    flex-shrink: 0;
     margin-bottom: 1rem;
     padding-bottom: 0.8rem;
   }
   
   .events-sidebar-nav {
-    flex: 1;  /* Take remaining space */
+    flex: 1;
     overflow-y: auto;
-    max-height: calc(100vh - 150px);  /* Adjust for navbar + header */
-    padding-bottom: 20px;  /* Ensure last item is visible */
-    padding-right: 0.5rem;  /* More padding for scrollbar */
+    max-height: calc(100vh - 150px);
+    padding-bottom: 20px;
+    padding-right: 0.5rem;
   }
   
-  .events-content-wrapper.with-sidebar {
-    margin-right: 0;
-  }
-  
-  /* Ensure scrollbar is visible and styled */
+  /* Scrollbar Styling */
   .events-sidebar-nav::-webkit-scrollbar {
-    width: 4px;  /* Slightly wider on mobile */
+    width: 4px;
   }
   
   .events-sidebar-nav::-webkit-scrollbar-track {
@@ -2014,48 +2001,68 @@ body {
     border-radius: 2px;
   }
   
-  /* Make subevent container scrollable if expanded */
+  /* Expandable subevent container */
   .subevent-container.expanded {
-    max-height: 400px;  /* Increase max-height on mobile */
+    max-height: 400px;
     overflow-y: auto;
   }
   
-  /* Adjust hamburger button position */
+  /* Events Content Wrapper - FIX FOR BLUR ISSUE */
+  .events-content-wrapper {
+    margin-right: 0 !important;  /* Override sidebar margin */
+    transform: none !important;  /* Remove any transform */
+    filter: none !important;  /* Remove any filter */
+    opacity: 1 !important;  /* Full opacity */
+  }
+  
+  /* Only apply effects when sidebar is actually open */
+  .events-content-wrapper.sidebar-open {
+    /* Optional: Add subtle effect only when sidebar is open */
+    /* Remove these lines if you don't want any effect */
+    /* transform: scale(0.98); */
+    /* opacity: 0.95; */
+  }
+  
+  /* Hamburger Button */
   .events-hamburger-btn {
     top: 5rem;
     right: 1rem;
-    z-index: 51;  /* Ensure it's above sidebar */
+    z-index: 51;
+  }
+  
+  /* Mobile Overlay - only show when sidebar is open */
+  .events-mobile-overlay {
+    display: none;  /* Hidden by default */
+  }
+  
+  .events-mobile-overlay.active {
+    display: block;  /* Show only when active */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 30;
   }
 }
 
-/* For very small screens */
+/* Very Small Screens (480px and below) */
 @media (max-width: 480px) {
-  .events-sidebar {
-    width: 100%;  /* Full width on very small screens */
-    right: -100%;
-  }
-  
-  .events-sidebar.sidebar-open {
-    right: 0;
-    transform: translateX(0);
-  }
-  
-  .events-sidebar-nav {
-    max-height: calc(100vh - 140px);  /* Even more space */
-  }
-}
-
-
-@media (max-width: 480px) {
+  /* Typography */
   .hero-description {
     font-size: 0.9rem;
     letter-spacing: 0.2em;
   }
 
+  /* Grid Layouts */
   .stats-grid {
     grid-template-columns: 1fr;
   }
 
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Gallery */
   .gallery-filters {
     flex-direction: column;
     align-items: stretch;
@@ -2065,11 +2072,22 @@ body {
     width: 100%;
   }
 
-  .info-grid {
-    grid-template-columns: 1fr;
+  /* Events Sidebar - Full width on very small screens */
+  .events-sidebar {
+    width: 80%;  /* Not quite full width, leave some space */
+    right: -80%;
+  }
+  
+  .events-sidebar.sidebar-open {
+    right: 0;
+  }
+  
+  .events-sidebar-nav {
+    max-height: calc(100vh - 140px);
   }
 }
 
+/* Credits */
 .creditscsn {
   color: var(--text-muted);
   font-size: 0.95rem;
