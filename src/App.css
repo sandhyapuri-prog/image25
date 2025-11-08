@@ -1364,7 +1364,7 @@ body {
   top: 50%;
   transform: translateY(-50%) translateX(calc(100% + 1rem));
   height: auto;
-  max-height: 70vh;
+  max-height: 75vh;
   width: 180px;
   transition: transform 0.3s ease;
   z-index: 40;
@@ -1390,7 +1390,7 @@ body {
 }
 
 .events-sidebar-title {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--primary);
   letter-spacing: 0.15em;
   text-align: center;
