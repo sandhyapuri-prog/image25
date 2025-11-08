@@ -1953,92 +1953,49 @@ body {
 /* Mobile Responsive Fix for Events Sidebar */
 @media (max-width: 768px) {
   .events-sidebar {
-    position: fixed;
-    right: -260px;  /* Start off-screen (hidden) */
+    right: 0;
     top: 70px;  /* Start below navbar */
+    transform: translateX(100%);
     height: calc(100vh - 70px);  /* Full height minus navbar */
-    max-height: calc(100vh - 70px);
-    width: 250px;  /* Fixed width */
-    border-radius: 16px 0 0 16px;  /* Rounded left corners */
-    transition: right 0.3s ease;  /* Smooth transition for both open and close */
-    z-index: 40;
+    max-height: calc(100vh - 70px);  /* Override the 78vh */
+    width: 250px;
+    border-radius: 0;
+    margin-top: 0;
   }
   
   .events-sidebar.sidebar-open {
-    right: 0;  /* Slide in from right */
+    transform: translateX(0);
   }
   
   .events-sidebar-inner {
     height: 100%;
     display: flex;
     flex-direction: column;
-    border-radius: 16px 0 0 16px;  /* Match parent border radius */
-    padding: 1rem;
-    background: var(--gradient-elegant);
-    backdrop-filter: blur(20px);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);  /* Shadow on left side */
+    border-radius: 0;
+    padding: 1rem;  /* More padding for mobile */
   }
   
   .events-sidebar-header {
-    flex-shrink: 0;
+    flex-shrink: 0;  /* Prevent header from shrinking */
     margin-bottom: 1rem;
     padding-bottom: 0.8rem;
-    border-bottom: 1px solid rgba(160, 61, 55, 0.1);
   }
   
   .events-sidebar-nav {
-    flex: 1;
+    flex: 1;  /* Take remaining space */
     overflow-y: auto;
-    max-height: calc(100vh - 150px);
-    padding-bottom: 20px;
-    padding-right: 0.5rem;
-  }
-  
-  .events-content-wrapper {
-    transition: all 0.3s ease;  /* Smooth content adjustment */
+    max-height: calc(100vh - 150px);  /* Adjust for navbar + header */
+    padding-bottom: 20px;  /* Ensure last item is visible */
+    padding-right: 0.5rem;  /* More padding for scrollbar */
   }
   
   .events-content-wrapper.with-sidebar {
     margin-right: 0;
-    /* Optional: slightly scale down content when sidebar is open */
-    transform: scale(0.95);
-    opacity: 0.9;
   }
   
-  /* Mobile overlay with smooth transition */
-  .events-mobile-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    z-index: 30;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  
-  .events-mobile-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  /* Hamburger button adjustments */
-  .events-hamburger-btn {
-    top: 5rem;
-    right: 1rem;
-    z-index: 51;
-    transition: all 0.3s ease;
-  }
-  
-  /* Move hamburger button when sidebar is open */
-  .events-sidebar.sidebar-open ~ .events-hamburger-btn,
-  body:has(.events-sidebar.sidebar-open) .events-hamburger-btn {
-    right: 260px;  /* Move with sidebar */
-  }
-  
-  /* Ensure scrollbar is visible */
+  /* Ensure scrollbar is visible and styled */
   .events-sidebar-nav::-webkit-scrollbar {
-    width: 4px;
+    width: 4px;  /* Slightly wider on mobile */
   }
   
   .events-sidebar-nav::-webkit-scrollbar-track {
@@ -2051,37 +2008,17 @@ body {
     border-radius: 2px;
   }
   
-  /* Expanded subevent container */
+  /* Make subevent container scrollable if expanded */
   .subevent-container.expanded {
-    max-height: 400px;
+    max-height: 400px;  /* Increase max-height on mobile */
     overflow-y: auto;
   }
-}
-
-/* For tablets in portrait */
-@media (min-width: 480px) and (max-width: 768px) {
-  .events-sidebar {
-    width: 280px;  /* Slightly wider on tablets */
-    right: -290px;
-  }
-}
-
-/* Remove the transform-based positioning from desktop */
-@media (min-width: 769px) {
-  .events-sidebar {
-    position: fixed;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%) translateX(calc(100% + 1rem));
-    height: auto;
-    max-height: 78vh;
-    width: 180px;
-    transition: transform 0.3s ease;
-    z-index: 40;
-  }
   
-  .events-sidebar.sidebar-open {
-    transform: translateY(-50%) translateX(0);
+  /* Adjust hamburger button position */
+  .events-hamburger-btn {
+    top: 5rem;
+    right: 1rem;
+    z-index: 51;  /* Ensure it's above sidebar */
   }
 }
 
@@ -2101,6 +2038,8 @@ body {
     max-height: calc(100vh - 140px);  /* Even more space */
   }
 }
+
+
 @media (max-width: 480px) {
   .hero-description {
     font-size: 0.9rem;
