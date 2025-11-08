@@ -48,7 +48,7 @@ const GalleryPage = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isLightboxOpen]);
+  }, [isLightboxOpen, closeLightbox, goToNext, goToPrevious]);
 
 
   return (
