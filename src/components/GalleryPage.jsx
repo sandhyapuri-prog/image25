@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const GalleryPage = () => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   // Gallery images from 1.jpg to 18.jpg
   const galleryImages = Array.from({ length: 18 }, (_, i) => ({
@@ -12,26 +12,35 @@ const GalleryPage = () => {
     size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
   }));
 
-  const closeLightbox = useCallback(() => {
-    setIsLightboxOpen(false);
-  }, []);
+  const openLightbox = (index) => {
+    setSelectedImageIndex(index);
+    setIsLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
 
-  const goToPrevious = useCallback(() => {
-    setSelectedImageIndex((prevIndex) =>
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    setSelectedImageIndex(null);
+    document.body.style.overflow = 'unset';
+  };
+
+  const goToPrevious = () => {
+    setSelectedImageIndex((prevIndex) => 
       prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
     );
-  }, [galleryImages.length]);
+  };
 
-  const goToNext = useCallback(() => {
-    setSelectedImageIndex((prevIndex) =>
+  const goToNext = () => {
+    setSelectedImageIndex((prevIndex) => 
       prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
     );
-  }, [galleryImages.length]);
+  };
 
-  useEffect(() => {
+  // Handle keyboard navigation
+  React.useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isLightboxOpen) return;
-
+      
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') goToPrevious();
       if (e.key === 'ArrowRight') goToNext();
@@ -39,7 +48,9 @@ const GalleryPage = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isLightboxOpen, closeLightbox, goToNext, goToPrevious]);
+  }, [isLightboxOpen]);
+
+
   return (
     <div className="gallery-page">
       <div className="gallery-hero">
