@@ -1378,14 +1378,12 @@ body {
   background: var(--gradient-elegant);
   backdrop-filter: blur(20px);
   border-radius: 16px;
-  padding: 1rem;
+  padding: 0.2rem;
   border: 1px solid rgba(160, 61, 55, 0.1);
   box-shadow: var(--shadow-lg);
 }
 
 .events-sidebar-header {
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.8rem;
   border-bottom: 1px solid rgba(160, 61, 55, 0.1);
 }
 
@@ -1414,32 +1412,6 @@ body {
   backdrop-filter: blur(5px);
   z-index: 30;
 }
-
-
-/* FORCE MOBILE SIDEBAR TO TOP — NO CENTERING */
-@media (max-width: 768px) {
-  .events-sidebar {
-    position: fixed !important;
-    top: 5rem !important;
-    bottom: 1rem !important;
-    right: 1rem !important;
-
-    transform: translateX(calc(100% + 1rem)) !important;
-    max-height: calc(100vh - 6rem) !important;
-    overflow-y: auto !important;
-  }
-
-  .events-sidebar.sidebar-open {
-    transform: translateX(0) !important;
-  }
-
-  .events-sidebar-inner {
-    height: 100% !important;
-    overflow-y: auto !important;
-  }
-}
-
-
 
 
 /* Event Details Container */
