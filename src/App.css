@@ -1364,7 +1364,7 @@ body {
   top: 50%;
   transform: translateY(-50%) translateX(calc(100% + 1rem));
   height: auto;
-  max-height: 80vh;
+  max-height: 79.9vh;
   width: 180px;
   transition: transform 0.3s ease;
   z-index: 40;
