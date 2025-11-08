@@ -1952,54 +1952,92 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .content-wrapper {
-    padding: 1rem;
-  }
-  
-  .content-wrapper.with-sidebar {
-    margin-right: 0;
-  }
-  
-  .sidebar {
+  .events-sidebar {
     right: 0;
-    top: 70px;  /* ← Account for navbar height */
+    top: 70px;  /* Start below navbar */
     transform: translateX(100%);
-    height: calc(100vh - 70px);  /* ← Subtract navbar height */
-    width: 200px;
+    height: calc(100vh - 70px);  /* Full height minus navbar */
+    max-height: calc(100vh - 70px);  /* Override the 78vh */
+    width: 250px;
     border-radius: 0;
+    margin-top: 0;
   }
   
-  .sidebar-open {
+  .events-sidebar.sidebar-open {
     transform: translateX(0);
   }
   
-  .sidebar-inner {
+  .events-sidebar-inner {
     height: 100%;
-    border-radius: 0;
     display: flex;
     flex-direction: column;
+    border-radius: 0;
+    padding: 1rem;  /* More padding for mobile */
   }
   
-  /* Add this to ensure nav takes available space */
-  .sidebar-nav {
+  .events-sidebar-header {
+    flex-shrink: 0;  /* Prevent header from shrinking */
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+  }
+  
+  .events-sidebar-nav {
+    flex: 1;  /* Take remaining space */
+    overflow-y: auto;
     max-height: calc(100vh - 150px);  /* Adjust for navbar + header */
+    padding-bottom: 20px;  /* Ensure last item is visible */
+    padding-right: 0.5rem;  /* More padding for scrollbar */
+  }
+  
+  .events-content-wrapper.with-sidebar {
+    margin-right: 0;
+  }
+  
+  /* Ensure scrollbar is visible and styled */
+  .events-sidebar-nav::-webkit-scrollbar {
+    width: 4px;  /* Slightly wider on mobile */
+  }
+  
+  .events-sidebar-nav::-webkit-scrollbar-track {
+    background: rgba(160, 61, 55, 0.1);
+    border-radius: 2px;
+  }
+  
+  .events-sidebar-nav::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 2px;
+  }
+  
+  /* Make subevent container scrollable if expanded */
+  .subevent-container.expanded {
+    max-height: 400px;  /* Increase max-height on mobile */
     overflow-y: auto;
   }
   
-  .main-content-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .criteria-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .info-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
+  /* Adjust hamburger button position */
+  .events-hamburger-btn {
+    top: 5rem;
+    right: 1rem;
+    z-index: 51;  /* Ensure it's above sidebar */
   }
 }
 
+/* For very small screens */
+@media (max-width: 480px) {
+  .events-sidebar {
+    width: 100%;  /* Full width on very small screens */
+    right: -100%;
+  }
+  
+  .events-sidebar.sidebar-open {
+    right: 0;
+    transform: translateX(0);
+  }
+  
+  .events-sidebar-nav {
+    max-height: calc(100vh - 140px);  /* Even more space */
+  }
+}
 @media (max-width: 480px) {
   .hero-description {
     font-size: 0.9rem;
