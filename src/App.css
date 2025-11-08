@@ -1364,7 +1364,7 @@ body {
   top: 50%;
   transform: translateY(-50%) translateX(calc(100% + 1rem));
   height: auto;
-  max-height: 70vh;
+  max-height: 80vh;  /* Increased from 70vh for more space */
   width: 180px;
   transition: transform 0.3s ease;
   z-index: 40;
@@ -1381,12 +1381,16 @@ body {
   padding: 1rem;
   border: 1px solid rgba(160, 61, 55, 0.1);
   box-shadow: var(--shadow-lg);
+  height: 100%;  /* Add this */
+  display: flex;  /* Add this */
+  flex-direction: column;  /* Add this */
 }
 
 .events-sidebar-header {
   margin-bottom: 1rem;
   padding-bottom: 0.8rem;
   border-bottom: 1px solid rgba(160, 61, 55, 0.1);
+  flex-shrink: 0;  /* Add this */
 }
 
 .events-sidebar-title {
@@ -1402,9 +1406,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  max-height: calc(70vh - 60px);
+  max-height: calc(80vh - 60px);  /* Increased to match sidebar height */
   overflow-y: auto;
   padding-right: 0.3rem;
+  flex: 1;  /* Add this - takes remaining space */
 }
 
 .events-mobile-overlay {
@@ -1413,7 +1418,10 @@ body {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   z-index: 30;
+  opacity: 1;  /* Add for transition */
+  transition: opacity 0.3s ease;  /* Add smooth fade */
 }
+
 /* Event Details Container */
 .event-details-container {
   max-width: 1000px;
