@@ -182,7 +182,7 @@ body {
 
 .nav-item {
   position: relative;
-  padding: 0.8rem 1.2rem;
+  padding: 1rem 1rem;
   background: transparent;
   border: 1px solid transparent;
   color: var(--text-secondary);
@@ -1367,11 +1367,12 @@ body {
   max-height: 78vh;
   width: 180px;
   transition: transform 0.3s ease;
+  overflow-y: auto;
   z-index: 40;
 }
 
 .events-sidebar.sidebar-open {
-  transform: translateY(-50%) translateX(0);
+  transform: translateX(0);
 }
 
 .events-sidebar-inner {
@@ -1381,6 +1382,8 @@ body {
   padding: 1rem;
   border: 1px solid rgba(160, 61, 55, 0.1);
   box-shadow: var(--shadow-lg);
+  height: 100%; /* make inner fill parent */
+  overflow-y: auto; /* ensure scroll still works inside */
 }
 
 .events-sidebar-header {
