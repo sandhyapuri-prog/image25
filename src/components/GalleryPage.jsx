@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 const GalleryPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -12,35 +12,27 @@ const GalleryPage = () => {
     size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
   }));
 
-  const openLightbox = (index) => {
-    setSelectedImageIndex(index);
-    setIsLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
+ const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
     setSelectedImageIndex(null);
     document.body.style.overflow = 'unset';
-  };
+  }, []);
 
-  const goToPrevious = () => {
-    setSelectedImageIndex((prevIndex) => 
+  const goToPrevious = useCallback(() => {
+    setSelectedImageIndex((prevIndex) =>
       prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
     );
-  };
+  }, [galleryImages.length]);
 
-  const goToNext = () => {
-    setSelectedImageIndex((prevIndex) => 
+  const goToNext = useCallback(() => {
+    setSelectedImageIndex((prevIndex) =>
       prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [galleryImages.length]);
 
-  // Handle keyboard navigation
-  React.useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isLightboxOpen) return;
-      
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') goToPrevious();
       if (e.key === 'ArrowRight') goToNext();
@@ -49,7 +41,6 @@ const GalleryPage = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isLightboxOpen, closeLightbox, goToNext, goToPrevious]);
-
 
   return (
     <div className="gallery-page">
