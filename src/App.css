@@ -378,8 +378,8 @@ body {
 .hero-bg-image {
   position: absolute;
   inset: -10%;
-  background: url('components/assets/CrypteX.jpg') center/cover;
-  opacity: 0.15;
+  background: url('components/assets/brochure.png') center/cover;
+  opacity: 0.75;
   filter: sepia(20%) saturate(1.2);
   will-change: transform;
 }
