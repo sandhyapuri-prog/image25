@@ -113,7 +113,7 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to { transform: rotate(359deg); }
 }
 
 /* Navbar Styles */
