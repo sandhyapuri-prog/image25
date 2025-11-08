@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const GalleryPage = () => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   // Gallery images from 1.jpg to 18.jpg
   const galleryImages = Array.from({ length: 18 }, (_, i) => ({
@@ -18,26 +18,23 @@ const GalleryPage = () => {
     document.body.style.overflow = 'hidden';
   };
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
-    setSelectedImageIndex(null);
-    document.body.style.overflow = 'unset';
-  };
+  }, []);
 
-  const goToPrevious = () => {
-    setSelectedImageIndex((prevIndex) => 
+  const goToPrevious = useCallback(() => {
+    setSelectedImageIndex((prevIndex) =>
       prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
     );
-  };
+  }, [galleryImages.length]);
 
-  const goToNext = () => {
-    setSelectedImageIndex((prevIndex) => 
+    const goToNext = useCallback(() => {
+    setSelectedImageIndex((prevIndex) =>
       prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [galleryImages.length]);
 
-  // Handle keyboard navigation
-  React.useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isLightboxOpen) return;
 
@@ -48,8 +45,7 @@ const GalleryPage = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isLightboxOpen, goToNext, goToPrevious, closeLightbox]);
-
+  }, [isLightboxOpen, closeLightbox, goToNext, goToPrevious]);
   return (
     <div className="gallery-page">
       <div className="gallery-hero">
