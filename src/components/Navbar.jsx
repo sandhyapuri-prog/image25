@@ -23,7 +23,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
       id: 'brochure', 
       label: 'BROCHURE', 
       isExternal: true, 
-      link: 'https://drive.google.com/file/d/1xNYFjD7GS9jYJZaLhsOg5tD4IOrlLCyg/view?usp=drive_link'
+      link: 'https://drive.google.com/file/d/18AbIciYUASsf4Z6Wx2ShvmeDtmFSUSbR/view?usp=sharing'
     }
   ];
 
