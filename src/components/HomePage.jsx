@@ -74,10 +74,10 @@ const HomePage = ({ setCurrentPage }) => {
             <div className="stats-grid">
               <div className="stat-card">
                 <h3 className="stat-number">5</h3>
-                <p className="stat-label">Categories</p>
+                <p className="stat-label">Fests</p>
               </div>
               <div className="stat-card">
-                <h3 className="stat-number">35+</h3>
+                <h3 className="stat-number">30+</h3>
                 <p className="stat-label">Events</p>
               </div>
               <div className="stat-card">
