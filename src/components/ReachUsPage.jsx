@@ -44,7 +44,7 @@ const ReachUsPage = () => {
                   Facebook
                 </a>
                 <a 
-                  href="https://www.instagram.com/cambridgenoida" 
+                  href="https://www.instagram.com/imagecsn/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="social-link"
