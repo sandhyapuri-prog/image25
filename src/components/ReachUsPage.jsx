@@ -21,7 +21,8 @@ const ReachUsPage = () => {
 
             <div className="info-card">
               <h3>Contact</h3>
-              <p>Email: info@cambridgeschool.edu.in</p>
+              <p>Email: image.csn@cambridgeschool.edu.in</p>
+              <p>Phone Numbers: 9810148720, 9811962424, 9873247670</p>
             </div>
 
             <div className="info-card">
