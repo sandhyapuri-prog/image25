@@ -10,7 +10,7 @@ const ReachUsPage = () => {
 
       <div className="container">
         <div className="contact-grid" style={{ gridTemplateColumns: '1fr', justifyContent: 'center', maxWidth: '600px', margin: '0 auto' }}>
-          {/* Contact Info */}
+
           <div className="contact-info-section">
             <div className="info-card">
               <h3>Address</h3>
