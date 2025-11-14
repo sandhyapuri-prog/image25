@@ -31,6 +31,12 @@ const TeamPage = () => {
       role: "Core Committee",
       phone: "82526 22725",
       phoneLink: "tel:+918252622725"
+    },
+    {
+      name: "Kshitij Gupta",
+      role: "Core Committee",
+      phone: "82878 53215",
+      phoneLink: "tel:+918287853125"
     }
   ];
 
