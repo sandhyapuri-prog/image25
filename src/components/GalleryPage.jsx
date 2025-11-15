@@ -4,7 +4,7 @@ const GalleryPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const galleryImages = Array.from({ length: 18 }, (_, i) => ({
+  const galleryImages = Array.from({ length: 28 }, (_, i) => ({
     id: i + 1,
     src: `/gallery/${i + 1}.jpg`,
     title: `Image ${i + 1}`,
