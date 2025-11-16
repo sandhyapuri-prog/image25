@@ -112,7 +112,7 @@ const HomePage = ({ setCurrentPage }) => {
             </div>
             <div className="category-card" onClick={() => setCurrentPage('events')}>
               <h3>TECHNOLYMPICS</h3>
-              <p>Technology & Innovation</p>
+              <p>Science, Technology & Innovation</p>
             </div>
             <div className="category-card" onClick={() => setCurrentPage('events')}>
               <h3>AUREUS</h3>
