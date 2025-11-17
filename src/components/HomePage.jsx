@@ -74,12 +74,6 @@ const HomePage = ({ setCurrentPage }) => {
           </div>
         </div>
 
-        <div className="scroll-indicator">
-          <div className="mouse">
-            <div className="wheel"></div>
-          </div>
-          <p>Scroll to explore</p>
-        </div>
       </section>
 
       {/* About Section */}
