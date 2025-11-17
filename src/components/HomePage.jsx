@@ -317,6 +317,7 @@ const HomePage = ({ setCurrentPage }) => {
             <div className="footer-links">
               <button onClick={() => setCurrentPage('events')}>Events</button>
               <button onClick={() => setCurrentPage('gallery')}>Gallery</button>
+              <button onClick={() => setCurrentPage('team')}>Our Team</button>
               <button onClick={() => setCurrentPage('reach-us')}>Contact</button>
             </div>
           </div>
