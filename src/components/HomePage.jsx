@@ -9,6 +9,38 @@ const HomePage = ({ setCurrentPage }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Schedule data
+  const scheduleDay1 = [
+    { id: 1, name: "Symphony", time: "9:30 a.m." },
+    { id: 2, name: "Nrityanjali", time: "11:00 a.m." },
+    { id: 3, name: "Sur Sangam", time: "9:30 a.m." },
+    { id: 4, name: "Sanskrit Shloka Chanting", time: "11:00 a.m." },
+    { id: 5, name: "Ted Talk", time: "9:45 a.m." },
+    { id: 6, name: "Baaton Baaton Main", time: "11:00 a.m." },
+    { id: 7, name: "Kitchen Geniuses", time: "9:30 a.m." },
+    { id: 8, name: "Flights of Poetic Fantasy", time: "9:30 a.m." },
+    { id: 9, name: "Chitrashala", time: "9:30 a.m." },
+    { id: 10, name: "Aesthetic Moves", time: "9:30 a.m." },
+    { id: 11, name: "Game Craft", time: "10:00 a.m." },
+    { id: 12, name: "Webolution", time: "9:30 a.m." },
+    { id: 13, name: "Chem Craft 3D", time: "9:45 a.m." },
+    { id: 14, name: "Vista View", time: "9:30 a.m." },
+    { id: 15, name: "CrypteX", time: "9:30 a.m." }
+  ];
+
+  const scheduleDay2 = [
+    { id: 1, name: "IQrypt: Science and Technology Quiz", time: "9:00 a.m. & 9:45 a.m." },
+    { id: 2, name: "Elan: The Pulse Within", time: "11:00 a.m." },
+    { id: 3, name: "Nukkad Natak", time: "9:15 a.m." },
+    { id: 4, name: "Rube it Up!", time: "9:30 a.m." },
+    { id: 5, name: "Bid Blitz", time: "9:00 a.m." },
+    { id: 6, name: "Think Tank", time: "9:00 a.m." },
+    { id: 7, name: "Eco Innovators", time: "9:30 a.m." },
+    { id: 8, name: "Game Spark", time: "9:30 a.m." },
+    { id: 9, name: "Top Coders", time: "9:30 a.m." },
+    { id: 10, name: "Reel Harmony", time: "9:30 a.m." }
+  ];
+
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -123,185 +155,160 @@ const HomePage = ({ setCurrentPage }) => {
       </section>
 
       {/* Schedule Section */}
-      <section className="schedule-section">
+      <section className="schedule-section" style={{
+        padding: '5rem 0',
+        background: 'var(--bg-tertiary)'
+      }}>
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">EVENT SCHEDULE</h2>
+            <h2 className="section-title">SCHEDULE</h2>
             <div className="title-line"></div>
-            <p className="section-subtitle">A Festival of Interschool Competitions</p>
+            <p style={{
+              textAlign: 'center',
+              color: 'var(--text-secondary)',
+              marginTop: '1rem',
+              fontSize: '1.1rem'
+            }}>A Festival of Interschool Competitions</p>
           </div>
           
-          <div className="schedule-tables">
-            {/* Day 1 Table */}
-            <div className="schedule-day">
-              <div className="day-header">
-                <h3>DAY 1</h3>
-                <p>Wednesday, November 19, 2025</p>
+          <div className="schedule-container" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gap: '2rem',
+            marginTop: '3rem'
+          }}>
+            {/* Day 1 */}
+            <div className="day-schedule" style={{
+              background: 'var(--bg-card)',
+              borderRadius: '16px',
+              padding: '2rem',
+              border: '1px solid rgba(160, 61, 55, 0.15)',
+              boxShadow: 'var(--shadow-md)'
+            }}>
+              <div className="day-header" style={{
+                textAlign: 'center',
+                marginBottom: '1.5rem',
+                paddingBottom: '1rem',
+                borderBottom: '2px solid var(--primary)'
+              }}>
+                <h3 style={{
+                  color: 'var(--primary)',
+                  fontSize: '1.5rem',
+                  fontWeight: '700',
+                  marginBottom: '0.5rem'
+                }}>DAY 1</h3>
+                <p style={{
+                  color: 'var(--text-secondary)',
+                  fontSize: '0.95rem'
+                }}>Wednesday, November 19, 2025</p>
               </div>
-              <div className="table-wrapper">
-                <table className="schedule-table">
-                  <thead>
-                    <tr>
-                      <th>S.No.</th>
-                      <th>Competition</th>
-                      <th>Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Symphony</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Nrityanjali</td>
-                      <td>11:00 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Sur Sangam</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Sanskrit Shloka Chanting</td>
-                      <td>11:00 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Ted Talk</td>
-                      <td>9:45 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Baaton Baaton Main</td>
-                      <td>11:00 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Kitchen Geniuses</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>8</td>
-                      <td>Flights of Poetic Fantasy</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>Chritrashala</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>Aesthetic Moves</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>11</td>
-                      <td>Game Craft</td>
-                      <td>10:00 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>12</td>
-                      <td>Webolution</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>13</td>
-                      <td>Chem Craft 3D</td>
-                      <td>9:45 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>14</td>
-                      <td>Vista View</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>15</td>
-                      <td>CrypteX</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                  </tbody>
-                </table>
+              
+              <div className="schedule-list">
+                {scheduleDay1.map((event, index) => (
+                  <div key={event.id} className="schedule-item" style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '0.8rem',
+                    marginBottom: '0.5rem',
+                    background: index % 2 === 0 ? 'rgba(160, 61, 55, 0.05)' : 'transparent',
+                    borderRadius: '8px',
+                    transition: 'all 0.3s ease'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                      <span style={{
+                        color: 'var(--accent)',
+                        fontSize: '0.9rem',
+                        fontWeight: '600',
+                        minWidth: '20px'
+                      }}>{event.id}.</span>
+                      <span style={{
+                        color: 'var(--text-primary)',
+                        fontSize: '0.95rem',
+                        fontWeight: '500'
+                      }}>{event.name}</span>
+                    </div>
+                    <span style={{
+                      color: 'var(--secondary)',
+                      fontSize: '0.85rem',
+                      fontWeight: '600',
+                      background: 'rgba(52, 100, 165, 0.1)',
+                      padding: '0.3rem 0.8rem',
+                      borderRadius: '15px'
+                    }}>{event.time}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Day 2 Table */}
-            <div className="schedule-day">
-              <div className="day-header">
-                <h3>DAY 2</h3>
-                <p>Thursday, November 20, 2025</p>
+            {/* Day 2 */}
+            <div className="day-schedule" style={{
+              background: 'var(--bg-card)',
+              borderRadius: '16px',
+              padding: '2rem',
+              border: '1px solid rgba(160, 61, 55, 0.15)',
+              boxShadow: 'var(--shadow-md)'
+            }}>
+              <div className="day-header" style={{
+                textAlign: 'center',
+                marginBottom: '1.5rem',
+                paddingBottom: '1rem',
+                borderBottom: '2px solid var(--primary)'
+              }}>
+                <h3 style={{
+                  color: 'var(--primary)',
+                  fontSize: '1.5rem',
+                  fontWeight: '700',
+                  marginBottom: '0.5rem'
+                }}>DAY 2</h3>
+                <p style={{
+                  color: 'var(--text-secondary)',
+                  fontSize: '0.95rem'
+                }}>Thursday, November 20, 2025</p>
               </div>
-              <div className="table-wrapper">
-                <table className="schedule-table">
-                  <thead>
-                    <tr>
-                      <th>S.No.</th>
-                      <th>Competition</th>
-                      <th>Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>IQrypt: Science and Technology Quiz</td>
-                      <td>9:00 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Elan: The Pulse Within</td>
-                      <td>9:45 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Nukkad Natak</td>
-                      <td>11:00 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Rube it Up!</td>
-                      <td>9:15 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Bit Blitz</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Think Tank</td>
-                      <td>9:00 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Eco Innovators</td>
-                      <td>9:00 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>8</td>
-                      <td>Game Spark</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>Top Coders</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>Reel Harmony</td>
-                      <td>9:30 a.m.</td>
-                    </tr>
-                  </tbody>
-                </table>
+              
+              <div className="schedule-list">
+                {scheduleDay2.map((event, index) => (
+                  <div key={event.id} className="schedule-item" style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '0.8rem',
+                    marginBottom: '0.5rem',
+                    background: index % 2 === 0 ? 'rgba(160, 61, 55, 0.05)' : 'transparent',
+                    borderRadius: '8px',
+                    transition: 'all 0.3s ease'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                      <span style={{
+                        color: 'var(--accent)',
+                        fontSize: '0.9rem',
+                        fontWeight: '600',
+                        minWidth: '20px'
+                      }}>{event.id}.</span>
+                      <span style={{
+                        color: 'var(--text-primary)',
+                        fontSize: '0.95rem',
+                        fontWeight: '500'
+                      }}>{event.name}</span>
+                    </div>
+                    <span style={{
+                      color: 'var(--secondary)',
+                      fontSize: '0.85rem',
+                      fontWeight: '600',
+                      background: 'rgba(52, 100, 165, 0.1)',
+                      padding: '0.3rem 0.8rem',
+                      borderRadius: '15px',
+                      whiteSpace: 'nowrap'
+                    }}>{event.time}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Footer */}
       <footer className="home-footer">
         <div className="container">
@@ -316,7 +323,6 @@ const HomePage = ({ setCurrentPage }) => {
             <div className="footer-links">
               <button onClick={() => setCurrentPage('events')}>Events</button>
               <button onClick={() => setCurrentPage('gallery')}>Gallery</button>
-              <button onClick={() => setCurrentPage('team')}>Our Team</button>
               <button onClick={() => setCurrentPage('reach-us')}>Contact</button>
             </div>
           </div>
