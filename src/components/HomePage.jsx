@@ -41,6 +41,16 @@ const HomePage = ({ setCurrentPage }) => {
     { id: 10, name: "Reel Harmony", time: "9:30 a.m." }
   ];
 
+ const downloadSchedule = () => {
+    const link = document.createElement('a');
+    link.href = '/schedule/imageSchedule25.jpg';
+    link.download = 'imageSchedule25.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+
   return (
     <div className="home-page">
       {/* Hero Section */}
