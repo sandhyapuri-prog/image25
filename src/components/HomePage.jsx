@@ -122,6 +122,186 @@ const HomePage = ({ setCurrentPage }) => {
         </div>
       </section>
 
+      {/* Schedule Section */}
+      <section className="schedule-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">EVENT SCHEDULE</h2>
+            <div className="title-line"></div>
+            <p className="section-subtitle">A Festival of Interschool Competitions</p>
+          </div>
+          
+          <div className="schedule-tables">
+            {/* Day 1 Table */}
+            <div className="schedule-day">
+              <div className="day-header">
+                <h3>DAY 1</h3>
+                <p>Wednesday, November 19, 2025</p>
+              </div>
+              <div className="table-wrapper">
+                <table className="schedule-table">
+                  <thead>
+                    <tr>
+                      <th>S.No.</th>
+                      <th>Competition</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Symphony</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Nrityanjali</td>
+                      <td>11:00 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Sur Sangam</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Sanskrit Shloka Chanting</td>
+                      <td>11:00 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Ted Talk</td>
+                      <td>9:45 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Baaton Baaton Main</td>
+                      <td>11:00 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Kitchen Geniuses</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>Flights of Poetic Fantasy</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>Chritrashala</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Aesthetic Moves</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>11</td>
+                      <td>Game Craft</td>
+                      <td>10:00 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>Webolution</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>13</td>
+                      <td>Chem Craft 3D</td>
+                      <td>9:45 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>14</td>
+                      <td>Vista View</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>15</td>
+                      <td>CrypteX</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Day 2 Table */}
+            <div className="schedule-day">
+              <div className="day-header">
+                <h3>DAY 2</h3>
+                <p>Thursday, November 20, 2025</p>
+              </div>
+              <div className="table-wrapper">
+                <table className="schedule-table">
+                  <thead>
+                    <tr>
+                      <th>S.No.</th>
+                      <th>Competition</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>IQrypt: Science and Technology Quiz</td>
+                      <td>9:00 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Elan: The Pulse Within</td>
+                      <td>9:45 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Nukkad Natak</td>
+                      <td>11:00 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Rube it Up!</td>
+                      <td>9:15 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Bit Blitz</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Think Tank</td>
+                      <td>9:00 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Eco Innovators</td>
+                      <td>9:00 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>Game Spark</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>Top Coders</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Reel Harmony</td>
+                      <td>9:30 a.m.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Footer */}
       <footer className="home-footer">
         <div className="container">
@@ -131,11 +311,12 @@ const HomePage = ({ setCurrentPage }) => {
               <p>Cambridge School Noida</p>
             </div>
             <div>
-              <h3 class="creditscsn">&copy; 2025 Cambridge School Noida. All rights reserved.</h3>
+              <h3 className="creditscsn">&copy; 2025 Cambridge School Noida. All rights reserved.</h3>
             </div>
             <div className="footer-links">
               <button onClick={() => setCurrentPage('events')}>Events</button>
               <button onClick={() => setCurrentPage('gallery')}>Gallery</button>
+              <button onClick={() => setCurrentPage('team')}>Our Team</button>
               <button onClick={() => setCurrentPage('reach-us')}>Contact</button>
             </div>
           </div>
