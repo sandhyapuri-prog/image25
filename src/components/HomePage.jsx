@@ -155,7 +155,7 @@ const HomePage = ({ setCurrentPage }) => {
       </section>
 
       {/* Schedule Section */}
-      <section className="schedule-section" style={{
+      <section className="schedule-section" id="schedule-section" style={{
         padding: '5rem 0',
         background: 'var(--bg-tertiary)'
       }}>
