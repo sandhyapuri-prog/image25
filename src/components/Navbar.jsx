@@ -16,20 +16,40 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
   const navItems = [
     { id: 'home', label: 'HOME' },
     { id: 'events', label: 'EVENTS'},
+    { id: 'schedule', label: 'SCHEDULE', isScrollTo: true },
     { id: 'gallery', label: 'GALLERY'},
-    { id: 'team', label: 'TEAM'},  // Added TEAM here
+    { id: 'team', label: 'TEAM'},
     { id: 'reach-us', label: 'REACH US'},
     { 
       id: 'brochure', 
       label: 'BROCHURE', 
       isExternal: true, 
-      link: 'https://drive.google.com/file/d/1ppxSlbm2tj_VPoAl-SqirXf36r9NQhwd/view?usp=sharing'
+      link: 'https://drive.google.com/file/d/1xNYFjD7GS9jYJZaLhsOg5tD4IOrlLCyg/view?usp=drive_link'
     }
   ];
 
   const handleNavClick = (item) => {
     if (item.isExternal) {
       window.open(item.link, '_blank', 'noopener,noreferrer');
+    } else if (item.isScrollTo) {
+
+      if (currentPage === 'home') {
+
+        const scheduleSection = document.getElementById('schedule-section');
+        if (scheduleSection) {
+          scheduleSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+
+        setCurrentPage('home');
+
+        setTimeout(() => {
+          const scheduleSection = document.getElementById('schedule-section');
+          if (scheduleSection) {
+            scheduleSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
     } else {
       setCurrentPage(item.id);
     }
@@ -48,7 +68,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                className={`nav-item ${!item.isExternal && currentPage === item.id ? 'active' : ''}`}
+                className={`nav-item ${!item.isExternal && !item.isScrollTo && currentPage === item.id ? 'active' : ''}`}
                 onClick={() => handleNavClick(item)}
               >
                 <span className="nav-label">{item.label}</span>
@@ -78,10 +98,25 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         {navItems.map((item) => (
           <button
             key={item.id}
-            className={`mobile-nav-item ${!item.isExternal && currentPage === item.id ? 'active' : ''}`}
+            className={`mobile-nav-item ${!item.isExternal && !item.isScrollTo && currentPage === item.id ? 'active' : ''}`}
             onClick={() => {
               if (item.isExternal) {
                 window.open(item.link, '_blank', 'noopener,noreferrer');
+              } else if (item.isScrollTo) {
+                if (currentPage === 'home') {
+                  const scheduleSection = document.getElementById('schedule-section');
+                  if (scheduleSection) {
+                    scheduleSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                } else {
+                  setCurrentPage('home');
+                  setTimeout(() => {
+                    const scheduleSection = document.getElementById('schedule-section');
+                    if (scheduleSection) {
+                      scheduleSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 100);
+                }
               } else {
                 setCurrentPage(item.id);
               }
