@@ -300,6 +300,59 @@ const HomePage = ({ setCurrentPage }) => {
               </div>
             </div>
           </div>
+          <div style={{
+              textAlign: 'center',
+              marginTop: '2rem'
+            }}>
+              <button 
+                onClick={downloadSchedule}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.8rem',
+                  padding: '0.8rem 2rem',
+                  background: 'linear-gradient(135deg, var(--primary), var(--accent))',
+                  color: 'var(--text-light)',
+                  border: 'none',
+                  borderRadius: '50px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: 'var(--shadow-md)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                }}
+              >
+                <svg 
+                  width="20" 
+                  height="20" 
+                  fill="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 16l-6-6h4V4h4v6h4l-6 6z"/>
+                  <path d="M20 18H4v2h16v-2z"/>
+                </svg>
+                <span>Download Schedule</span>
+              </button>
+              <p style={{
+                marginTop: '0.5rem',
+                fontSize: '0.85rem',
+                color: 'var(--text-muted)',
+                fontStyle: 'italic'
+              }}>
+                Save the schedule for offline viewing
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
