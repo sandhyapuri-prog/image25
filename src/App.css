@@ -346,6 +346,135 @@ body {
   position: relative;
 }
 
+/* Schedule Section */
+.schedule-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.schedule-tables {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.schedule-day {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.day-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  text-align: center;
+}
+
+.day-header h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.day-header p {
+  font-size: 15px;
+  opacity: 0.95;
+}
+
+.table-wrapper {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.schedule-table thead {
+  background: #f8f9fa;
+}
+
+.schedule-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #dee2e6;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.schedule-table tbody tr {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.schedule-table tbody tr:hover {
+  background: #f8f9fa;
+  transform: scale(1.01);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-table td {
+  padding: 12px 15px;
+  font-size: 15px;
+  color: #495057;
+}
+
+.schedule-table td:first-child {
+  font-weight: 600;
+  color: #667eea;
+  width: 60px;
+}
+
+.schedule-table td:last-child {
+  width: 120px;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+@media (max-width: 1024px) {
+  .schedule-tables {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .schedule-tables {
+    gap: 30px;
+  }
+  
+  .table-wrapper {
+    padding: 10px;
+  }
+  
+  .schedule-table {
+    font-size: 14px;
+  }
+  
+  .schedule-table th,
+  .schedule-table td {
+    padding: 10px;
+  }
+  
+  .schedule-table td:last-child {
+    width: 100px;
+  }
+}
+
 .hero-section {
   position: relative;
   min-height: 100vh;
