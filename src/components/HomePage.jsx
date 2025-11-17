@@ -9,7 +9,16 @@ const HomePage = ({ setCurrentPage }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Schedule data
+  const downloadSchedule = () => {
+    const link = document.createElement('a');
+    link.href = '/schedule/imageSchedule25.jpg'; 
+    link.download = 'imageSchedule25.jpg'; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+
   const scheduleDay1 = [
     { id: 1, name: "Symphony", time: "9:30 a.m." },
     { id: 2, name: "Nrityanjali", time: "11:00 a.m." },
@@ -40,16 +49,6 @@ const HomePage = ({ setCurrentPage }) => {
     { id: 9, name: "Top Coders", time: "9:30 a.m." },
     { id: 10, name: "Reel Harmony", time: "9:30 a.m." }
   ];
-
- const downloadSchedule = () => {
-    const link = document.createElement('a');
-    link.href = '/schedule/imageSchedule25.jpg';
-    link.download = 'imageSchedule25.jpg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
 
   return (
     <div className="home-page">
@@ -84,6 +83,12 @@ const HomePage = ({ setCurrentPage }) => {
           </div>
         </div>
 
+        <div className="scroll-indicator">
+          <div className="mouse">
+            <div className="wheel"></div>
+          </div>
+          <p>Scroll to explore</p>
+        </div>
       </section>
 
       {/* About Section */}
@@ -159,10 +164,14 @@ const HomePage = ({ setCurrentPage }) => {
       </section>
 
       {/* Schedule Section */}
-      <section className="schedule-section" id="schedule-section" style={{
-        padding: '5rem 0',
-        background: 'var(--bg-tertiary)'
-      }}>
+      <section 
+        id="schedule-section"
+        className="schedule-section" 
+        style={{
+          padding: '5rem 0',
+          background: 'var(--bg-tertiary)'
+        }}
+      >
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">SCHEDULE</h2>
@@ -173,6 +182,60 @@ const HomePage = ({ setCurrentPage }) => {
               marginTop: '1rem',
               fontSize: '1.1rem'
             }}>A Festival of Interschool Competitions</p>
+            
+
+            <div style={{
+              textAlign: 'center',
+              marginTop: '2rem'
+            }}>
+              <button 
+                onClick={downloadSchedule}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.8rem',
+                  padding: '0.8rem 2rem',
+                  background: 'linear-gradient(135deg, var(--primary), var(--accent))',
+                  color: 'var(--text-light)',
+                  border: 'none',
+                  borderRadius: '50px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: 'var(--shadow-md)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                }}
+              >
+                <svg 
+                  width="20" 
+                  height="20" 
+                  fill="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 16l-6-6h4V4h4v6h4l-6 6z"/>
+                  <path d="M20 18H4v2h16v-2z"/>
+                </svg>
+                <span>Download Schedule</span>
+              </button>
+              <p style={{
+                marginTop: '0.5rem',
+                fontSize: '0.85rem',
+                color: 'var(--text-muted)',
+                fontStyle: 'italic'
+              }}>
+                Save the schedule for offline viewing
+              </p>
+            </div>
           </div>
           
           <div className="schedule-container" style={{
@@ -181,7 +244,7 @@ const HomePage = ({ setCurrentPage }) => {
             gap: '2rem',
             marginTop: '3rem'
           }}>
-            {/* Day 1 */}
+
             <div className="day-schedule" style={{
               background: 'var(--bg-card)',
               borderRadius: '16px',
@@ -245,7 +308,6 @@ const HomePage = ({ setCurrentPage }) => {
               </div>
             </div>
 
-            {/* Day 2 */}
             <div className="day-schedule" style={{
               background: 'var(--bg-card)',
               borderRadius: '16px',
@@ -310,63 +372,9 @@ const HomePage = ({ setCurrentPage }) => {
               </div>
             </div>
           </div>
-          <div style={{
-              textAlign: 'center',
-              marginTop: '2rem'
-            }}>
-              <button 
-                onClick={downloadSchedule}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.8rem',
-                  padding: '0.8rem 2rem',
-                  background: 'linear-gradient(135deg, var(--primary), var(--accent))',
-                  color: 'var(--text-light)',
-                  border: 'none',
-                  borderRadius: '50px',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  boxShadow: 'var(--shadow-md)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-                }}
-              >
-                <svg 
-                  width="20" 
-                  height="20" 
-                  fill="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 16l-6-6h4V4h4v6h4l-6 6z"/>
-                  <path d="M20 18H4v2h16v-2z"/>
-                </svg>
-                <span>Download Schedule</span>
-              </button>
-              <p style={{
-                marginTop: '0.5rem',
-                fontSize: '0.85rem',
-                color: 'var(--text-muted)',
-                fontStyle: 'italic'
-              }}>
-                Save the schedule for offline viewing
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="home-footer">
         <div className="container">
           <div className="footer-content">
