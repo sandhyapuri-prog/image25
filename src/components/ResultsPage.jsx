@@ -4,8 +4,8 @@ const ResultsPage = () => {
 
   
   const googleDriveFileId = '1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y';
-  const pdfEmbedUrl = `https://drive.google.com/file/d/${1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y}/preview`;
-  const pdfViewUrl = `https://drive.google.com/file/d/${1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y}/view`;
+  const pdfEmbedUrl = `https://drive.google.com/file/d/${googleDriveFileId}/preview`;
+  const pdfViewUrl = `https://drive.google.com/file/d/${googleDriveFileId}/view`;
 
   const handleDownload = () => {
     window.open(pdfViewUrl, '_blank', 'noopener,noreferrer');
