@@ -1,14 +1,14 @@
-// In src/App.js
 import React, { useState, useEffect } from 'react';
 import './App.css';
+
+// Import components
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import EventsPage from './components/EventsPage';
 import GalleryPage from './components/GalleryPage';
-import ReachUsPage from './components/ReachUsPage';
-import ResultsPage from './components/ResultsPage';
 import TeamPage from './components/TeamPage';
-
+import ReachUsPage from './components/ReachUsPage';
+import ResultsPage from './components/ResultsPage'; // Add this import
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -18,25 +18,24 @@ const App = () => {
     setTimeout(() => setIsLoading(false), 800);
   }, []);
 
-// In App.js
-const renderPage = () => {
-  switch(currentPage) {
-    case 'home':
-      return <HomePage setCurrentPage={setCurrentPage} />;
-    case 'events':
-      return <EventsPage />;
-    case 'gallery':
-      return <GalleryPage />;
-    case 'team':
-      return <TeamPage />;
-    case 'results':
-      return <ResultsPage />;
-    case 'reach-us':
-      return <ReachUsPage />;
-    default:
-      return <HomePage setCurrentPage={setCurrentPage} />;
-  }
-};
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'home':
+        return <HomePage setCurrentPage={setCurrentPage} />;
+      case 'events':
+        return <EventsPage />;
+      case 'results': // Add this case
+        return <ResultsPage />;
+      case 'gallery':
+        return <GalleryPage />;
+      case 'team':
+        return <TeamPage />;
+      case 'reach-us':
+        return <ReachUsPage />;
+      default:
+        return <HomePage setCurrentPage={setCurrentPage} />;
+    }
+  };
 
   return (
     <>
