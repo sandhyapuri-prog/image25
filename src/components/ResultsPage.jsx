@@ -1,16 +1,13 @@
 import React from 'react';
 
-const ResultsPage = () => 
+const ResultsPage = () => {
+
   
   const googleDriveFileId = '1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y';
-  
-
   const pdfEmbedUrl = `https://drive.google.com/file/d/${1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y}/preview`;
-
   const pdfViewUrl = `https://drive.google.com/file/d/${1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y}/view`;
 
   const handleDownload = () => {
-    
     window.open(pdfViewUrl, '_blank', 'noopener,noreferrer');
   };
 
@@ -20,14 +17,12 @@ const ResultsPage = () =>
 
   return (
     <div className="results-page">
-      {/* Hero Section */}
       <div className="results-hero">
         <h1 className="page-title">Results</h1>
         <p className="page-subtitle">IMAGE 2025 Competition Results</p>
       </div>
 
       <div className="container">
-        {/* Download Button Section */}
         <div className="download-section">
           <button onClick={handleDownload} className="download-btn">
             <svg 
@@ -47,7 +42,6 @@ const ResultsPage = () =>
           </p>
         </div>
 
-        {/* PDF Viewer */}
         <div className="pdf-viewer-container">
           <iframe
             src={pdfEmbedUrl}
@@ -63,7 +57,6 @@ const ResultsPage = () =>
           </iframe>
         </div>
 
-        {/* Alternative: If PDF doesn't load */}
         <div className="alternative-link">
           <p>
             Having trouble viewing the PDF? 
@@ -198,7 +191,6 @@ const ResultsPage = () =>
           margin: 0;
         }
 
-        /* Loading indicator for iframe */
         .pdf-viewer-container::before {
           content: 'Loading PDF...';
           position: absolute;
