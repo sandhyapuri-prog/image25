@@ -14,7 +14,7 @@ const GalleryPage = () => {
   }));
 
   // PREVIOUS YEAR GLIMPSES (1-30)
-  const previousYearGlimpses = Array.from({ length: 30 }, (_, i) => ({
+  const previousYearGlimpses = Array.from({ length: 52 }, (_, i) => ({
     id: i + 1,
     src: `/gallery/${i + 1}.jpg`,
     title: `Previous Year - ${i + 1}`,
