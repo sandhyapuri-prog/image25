@@ -17,6 +17,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     { id: 'home', label: 'HOME' },
     { id: 'events', label: 'EVENTS'},
     { id: 'schedule', label: 'SCHEDULE', isScrollTo: true },
+    { id: 'results', label: 'RESULTS'}, // Added RESULTS
     { id: 'gallery', label: 'GALLERY'},
     { id: 'team', label: 'TEAM'},
     { id: 'reach-us', label: 'REACH US'},
@@ -32,17 +33,13 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     if (item.isExternal) {
       window.open(item.link, '_blank', 'noopener,noreferrer');
     } else if (item.isScrollTo) {
-
       if (currentPage === 'home') {
-
         const scheduleSection = document.getElementById('schedule-section');
         if (scheduleSection) {
           scheduleSection.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-
         setCurrentPage('home');
-
         setTimeout(() => {
           const scheduleSection = document.getElementById('schedule-section');
           if (scheduleSection) {
