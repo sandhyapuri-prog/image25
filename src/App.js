@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import EventsPage from './components/EventsPage';
 import GalleryPage from './components/GalleryPage';
 import ReachUsPage from './components/ReachUsPage';
+import ResultsPage from './components/ResultsPage';
 import TeamPage from './components/TeamPage';
 
 
@@ -27,7 +28,9 @@ const renderPage = () => {
     case 'gallery':
       return <GalleryPage />;
     case 'team':
-      return <TeamPage />;  // Add this line
+      return <TeamPage />;
+    case 'results':
+      return <ResultsPage />;
     case 'reach-us':
       return <ReachUsPage />;
     default:
