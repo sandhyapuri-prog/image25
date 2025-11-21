@@ -1,22 +1,16 @@
 import React from 'react';
 
-const ResultsPage = () => {
-  // INSTRUCTIONS TO GET YOUR GOOGLE DRIVE LINK:
-  // 1. Upload PDF to Google Drive
-  // 2. Right-click the PDF → Get Link → Change to "Anyone with the link can view"
-  // 3. Copy the FILE_ID from the link (https://drive.google.com/file/d/FILE_ID/view)
-  // 4. Replace YOUR_FILE_ID below with the actual FILE_ID
+const ResultsPage = () => 
   
-  const googleDriveFileId = 'YOUR_FILE_ID'; // Replace with your actual Google Drive file ID
+  const googleDriveFileId = '1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y';
   
-  // Google Drive embed URL for iframe
+
   const pdfEmbedUrl = `https://drive.google.com/file/d/${1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y}/preview`;
-  
-  // Google Drive direct view URL for download/open
+
   const pdfViewUrl = `https://drive.google.com/file/d/${1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y}/view`;
 
   const handleDownload = () => {
-    // Open in new tab - Google Drive will show download option
+    
     window.open(pdfViewUrl, '_blank', 'noopener,noreferrer');
   };
 
