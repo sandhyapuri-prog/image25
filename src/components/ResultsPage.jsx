@@ -1,16 +1,27 @@
 import React from 'react';
 
 const ResultsPage = () => {
-  // Update this with your actual PDF URL
-  const pdfUrl = '/results/image-2025-results.pdf'; // Or use a Google Drive link
+  // INSTRUCTIONS TO GET YOUR GOOGLE DRIVE LINK:
+  // 1. Upload PDF to Google Drive
+  // 2. Right-click the PDF → Get Link → Change to "Anyone with the link can view"
+  // 3. Copy the FILE_ID from the link (https://drive.google.com/file/d/FILE_ID/view)
+  // 4. Replace YOUR_FILE_ID below with the actual FILE_ID
+  
+  const googleDriveFileId = 'YOUR_FILE_ID'; // Replace with your actual Google Drive file ID
+  
+  // Google Drive embed URL for iframe
+  const pdfEmbedUrl = `https://drive.google.com/file/d/${1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y}/preview`;
+  
+  // Google Drive direct view URL for download/open
+  const pdfViewUrl = `https://drive.google.com/file/d/${1tTyzkT2jBc6jbs4roTC5TkN9qgdb-37Y}/view`;
 
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = pdfUrl;
-    link.download = 'IMAGE-2025-Results.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Open in new tab - Google Drive will show download option
+    window.open(pdfViewUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleOpenNewTab = () => {
+    window.open(pdfViewUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -35,24 +46,25 @@ const ResultsPage = () => {
               <path d="M12 16l-6-6h4V4h4v6h4l-6 6z"/>
               <path d="M20 18H4v2h16v-2z"/>
             </svg>
-            Download Results PDF
+            View/Download Results PDF
           </button>
           <p className="download-info">
-            Click to download the complete results document
+            Click to open the full results document in a new tab
           </p>
         </div>
 
         {/* PDF Viewer */}
         <div className="pdf-viewer-container">
           <iframe
-            src={pdfUrl}
+            src={pdfEmbedUrl}
             title="IMAGE 2025 Results"
             className="pdf-iframe"
             frameBorder="0"
+            allow="autoplay"
           >
             <p>
               Your browser does not support PDFs. 
-              <a href={pdfUrl} download> Download the PDF</a> to view it.
+              <button onClick={handleOpenNewTab}> Click here to view the PDF</button>
             </p>
           </iframe>
         </div>
@@ -61,19 +73,22 @@ const ResultsPage = () => {
         <div className="alternative-link">
           <p>
             Having trouble viewing the PDF? 
-            <a 
-              href={pdfUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <button 
+              onClick={handleOpenNewTab}
               style={{
+                background: 'none',
+                border: 'none',
                 color: '#A03D37',
                 textDecoration: 'underline',
                 marginLeft: '0.5rem',
-                fontWeight: '600'
+                fontWeight: '600',
+                cursor: 'pointer',
+                fontSize: 'inherit',
+                fontFamily: 'inherit'
               }}
             >
               Open in new tab
-            </a>
+            </button>
           </p>
         </div>
       </div>
@@ -163,6 +178,7 @@ const ResultsPage = () => {
           box-shadow: 0 4px 16px rgba(17, 11, 11, 0.12);
           border: 1px solid rgba(160, 61, 55, 0.15);
           margin-bottom: 2rem;
+          position: relative;
         }
 
         .pdf-iframe {
@@ -188,6 +204,19 @@ const ResultsPage = () => {
           margin: 0;
         }
 
+        /* Loading indicator for iframe */
+        .pdf-viewer-container::before {
+          content: 'Loading PDF...';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: #A03D37;
+          font-size: 1.2rem;
+          font-weight: 600;
+          z-index: -1;
+        }
+
         @media (max-width: 768px) {
           .page-title {
             font-size: 2rem;
@@ -199,13 +228,13 @@ const ResultsPage = () => {
 
           .download-btn {
             padding: 0.8rem 1.5rem;
-            font-size: 1rem;
+            font-size: 0.95rem;
             width: 100%;
           }
 
           .pdf-iframe {
-            height: 60vh;
-            min-height: 400px;
+            height: 70vh;
+            min-height: 500px;
           }
 
           .pdf-viewer-container {
@@ -223,8 +252,13 @@ const ResultsPage = () => {
           }
 
           .download-btn {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             padding: 0.7rem 1.2rem;
+          }
+
+          .pdf-iframe {
+            height: 60vh;
+            min-height: 400px;
           }
         }
       `}</style>
