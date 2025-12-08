@@ -3,32 +3,29 @@ import React, { useState, useEffect, useRef } from 'react';
 const GalleryPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState('all');
-  const [loadedImages, setLoadedImages] = useState(new Set());
   const imageRefs = useRef({});
 
-  // IMAGE 2025 PICTURES (31-52)
-  const image2025Pictures = Array.from({ length: 22 }, (_, i) => ({
+  // Gallery images (31-52 existing, add more from 53 onwards)
+  const galleryImages = Array.from({ length: 22 }, (_, i) => ({
     id: i + 31,
     src: `/gallery/${i + 31}.jpg`,
-    title: `IMAGE 2025 - ${i + 1}`,
+    title: `Gallery Image ${i + 1}`,
     size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
   }));
 
-  // PREVIOUS YEAR GLIMPSES (1-30)
-  const previousYearGlimpses = Array.from({ length: 30 }, (_, i) => ({
-    id: i + 1,
-    src: `/gallery/${i + 1}.jpg`,
-    title: `Previous Year - ${i + 1}`,
-    size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
-  }));
+  // To add more images, add them here starting from 53
+  // Example:
+  // const additionalImages = Array.from({ length: 10 }, (_, i) => ({
+  //   id: i + 53,
+  //   src: `/gallery/${i + 53}.jpg`,
+  //   title: `Gallery Image ${i + 23}`,
+  //   size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
+  // }));
+  // 
+  // Then combine: const galleryImages = [...existingImages, ...additionalImages];
 
-  // Combine all images
-  const allImages = [...image2025Pictures, ...previousYearGlimpses];
-
-  const openLightbox = (index, section) => {
-    const actualIndex = section === 'current' ? index : index + image2025Pictures.length;
-    setSelectedImageIndex(actualIndex);
+  const openLightbox = (index) => {
+    setSelectedImageIndex(index);
     setIsLightboxOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -41,13 +38,13 @@ const GalleryPage = () => {
 
   const goToPrevious = () => {
     setSelectedImageIndex((prevIndex) => 
-      prevIndex === 0 ? allImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
     setSelectedImageIndex((prevIndex) => 
-      prevIndex === allImages.length - 1 ? 0 : prevIndex + 1
+      prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -73,167 +70,31 @@ const GalleryPage = () => {
       </div>
 
       <div className="container">
-        {/* Section Tabs */}
-        <div className="section-tabs" style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '1rem',
-          margin: '3rem 0',
-          flexWrap: 'wrap'
-        }}>
-          <button
-            onClick={() => setCurrentSection('all')}
-            style={{
-              padding: '0.8rem 2rem',
-              background: currentSection === 'all' ? 'linear-gradient(135deg, #A03D37 0%, #C07D67 100%)' : 'rgba(255, 255, 255, 0.7)',
-              border: '1px solid #A03D37',
-              borderRadius: '25px',
-              color: currentSection === 'all' ? '#FFFFFF' : '#110B0B',
-              fontSize: '1rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em'
-            }}
-          >
-            All Photos
-          </button>
-          <button
-            onClick={() => setCurrentSection('current')}
-            style={{
-              padding: '0.8rem 2rem',
-              background: currentSection === 'current' ? 'linear-gradient(135deg, #A03D37 0%, #C07D67 100%)' : 'rgba(255, 255, 255, 0.7)',
-              border: '1px solid #A03D37',
-              borderRadius: '25px',
-              color: currentSection === 'current' ? '#FFFFFF' : '#110B0B',
-              fontSize: '1rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em'
-            }}
-          >
-            IMAGE 2025
-          </button>
-          <button
-            onClick={() => setCurrentSection('previous')}
-            style={{
-              padding: '0.8rem 2rem',
-              background: currentSection === 'previous' ? 'linear-gradient(135deg, #A03D37 0%, #C07D67 100%)' : 'rgba(255, 255, 255, 0.7)',
-              border: '1px solid #A03D37',
-              borderRadius: '25px',
-              color: currentSection === 'previous' ? '#FFFFFF' : '#110B0B',
-              fontSize: '1rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em'
-            }}
-          >
-            Previous Years
-          </button>
+        <div className="gallery-section">
+          <div className="masonry-gallery">
+            {galleryImages.map((image, index) => (
+              <div
+                key={image.id}
+                className={`gallery-item ${image.size}`}
+                onClick={() => openLightbox(index)}
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="image-wrapper">
+                  <img 
+                    src={image.src} 
+                    alt={image.title}
+                    loading="lazy"
+                  />
+                  <div className="image-overlay">
+                    <div className="overlay-content">
+                      <span className="expand-icon">🔍</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-
-        {/* IMAGE 2025 PICTURES Section */}
-        {(currentSection === 'all' || currentSection === 'current') && (
-          <div className="gallery-section" style={{ marginBottom: '4rem' }}>
-            <div className="section-header" style={{
-              textAlign: 'center',
-              marginBottom: '2rem'
-            }}>
-              <h2 style={{
-                fontSize: '2rem',
-                fontWeight: '700',
-                fontFamily: 'Playfair Display, serif',
-                color: '#A03D37',
-                marginBottom: '0.5rem'
-              }}>IMAGE 2025 PICTURES</h2>
-              <div style={{
-                width: '100px',
-                height: '3px',
-                background: 'linear-gradient(135deg, #A03D37 0%, #C07D67 100%)',
-                margin: '0 auto',
-                borderRadius: '2px'
-              }}></div>
-            </div>
-            
-            <div className="masonry-gallery">
-              {image2025Pictures.map((image, index) => (
-                <div
-                  key={image.id}
-                  className={`gallery-item ${image.size}`}
-                  onClick={() => openLightbox(index, 'current')}
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="image-wrapper">
-                    <img 
-                      src={image.src} 
-                      alt={image.title}
-                      loading="lazy"
-                    />
-                    <div className="image-overlay">
-                      <div className="overlay-content">
-                        <span className="expand-icon">🔍</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* PREVIOUS YEAR GLIMPSES Section */}
-        {(currentSection === 'all' || currentSection === 'previous') && (
-          <div className="gallery-section">
-            <div className="section-header" style={{
-              textAlign: 'center',
-              marginBottom: '2rem'
-            }}>
-              <h2 style={{
-                fontSize: '2rem',
-                fontWeight: '700',
-                fontFamily: 'Playfair Display, serif',
-                color: '#A03D37',
-                marginBottom: '0.5rem'
-              }}>PREVIOUS YEAR GLIMPSES</h2>
-              <div style={{
-                width: '100px',
-                height: '3px',
-                background: 'linear-gradient(135deg, #A03D37 0%, #C07D67 100%)',
-                margin: '0 auto',
-                borderRadius: '2px'
-              }}></div>
-            </div>
-            
-            <div className="masonry-gallery">
-              {previousYearGlimpses.map((image, index) => (
-                <div
-                  key={image.id}
-                  className={`gallery-item ${image.size}`}
-                  onClick={() => openLightbox(index, 'previous')}
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="image-wrapper">
-                    <img 
-                      src={image.src} 
-                      alt={image.title}
-                      loading="lazy"
-                    />
-                    <div className="image-overlay">
-                      <div className="overlay-content">
-                        <span className="expand-icon">🔍</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Lightbox Modal */}
@@ -250,16 +111,16 @@ const GalleryPage = () => {
 
             <div className="lightbox-image-container">
               <img 
-                src={allImages[selectedImageIndex].src} 
-                alt={allImages[selectedImageIndex].title}
+                src={galleryImages[selectedImageIndex].src} 
+                alt={galleryImages[selectedImageIndex].title}
                 className="lightbox-image"
               />
               <div className="lightbox-caption">
                 <span className="image-counter">
-                  {selectedImageIndex + 1} / {allImages.length}
+                  {selectedImageIndex + 1} / {galleryImages.length}
                 </span>
                 <span style={{ marginLeft: '1rem', color: '#C07D67' }}>
-                  {allImages[selectedImageIndex].title}
+                  {galleryImages[selectedImageIndex].title}
                 </span>
               </div>
             </div>
@@ -269,7 +130,7 @@ const GalleryPage = () => {
             </button>
 
             <div className="lightbox-thumbnails">
-              {allImages.map((image, index) => (
+              {galleryImages.map((image, index) => (
                 <div
                   key={image.id}
                   className={`thumbnail ${index === selectedImageIndex ? 'active' : ''}`}
@@ -284,6 +145,7 @@ const GalleryPage = () => {
       )}
 
       <style jsx>{`
+        {/* Keep all your existing styles exactly as they are */}
         .gallery-page {
           min-height: calc(100vh - 70px);
           background: #EAD4B9;
