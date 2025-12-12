@@ -5,24 +5,15 @@ const GalleryPage = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const imageRefs = useRef({});
 
-  // Gallery images (31-52 existing, add more from 53 onwards)
-  const galleryImages = Array.from({ length: 22 }, (_, i) => ({
-    id: i + 31,
-    src: `/gallery/${i + 31}.jpg`,
+  // Gallery images - specific 12 images
+  const imageNumbers = [65, 66, 71, 70, 74, 75, 77, 78, 72, 99, 98, 95];
+  
+  const galleryImages = imageNumbers.map((num, i) => ({
+    id: num,
+    src: `/gallery/${num}.jpg`,
     title: `Gallery Image ${i + 1}`,
     size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
   }));
-
-  // To add more images, add them here starting from 53
-  // Example:
-  // const additionalImages = Array.from({ length: 10 }, (_, i) => ({
-  //   id: i + 53,
-  //   src: `/gallery/${i + 53}.jpg`,
-  //   title: `Gallery Image ${i + 23}`,
-  //   size: i % 5 === 0 ? 'large' : i % 3 === 0 ? 'tall' : i % 7 === 0 ? 'wide' : 'normal'
-  // }));
-  // 
-  // Then combine: const galleryImages = [...existingImages, ...additionalImages];
 
   const openLightbox = (index) => {
     setSelectedImageIndex(index);
