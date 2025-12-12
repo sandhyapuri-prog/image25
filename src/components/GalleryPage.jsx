@@ -6,7 +6,7 @@ const GalleryPage = () => {
   const imageRefs = useRef({});
 
   // Gallery images - specific 12 images
-  const imageNumbers = [65, 66, 71, 70, 74, 75, 77, 78, 72, 99, 98, 95];
+  const imageNumbers = [65,66,71,70,74,75,77,78,72,99,98,95,53,54,55,56,57,58,59,60,61,73,62,63,64,67,95,96,97,100,93,94,92,91,90,89,88,87,85,84,83,82,79,81,86,80];
   
   const galleryImages = imageNumbers.map((num, i) => ({
     id: num,
